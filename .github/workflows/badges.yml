@@ -37,9 +37,10 @@ jobs:
     - name: Update badges
       run: |
           gopherbadger -md="README.md"
+          git status
           git config --local user.email "action@github.com"
           git config --local user.name "Github Action"
-          git add README.md
+          git add . 
           git commit -m "Update test coverage badge"
     - name: Push badge changes
       uses: ad-m/github-push-action@master
