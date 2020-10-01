@@ -48,21 +48,3 @@ jobs:
         fi
         exit 0
 
-    - name: Download gopherbadge
-      run: go get github.com/jpoles1/gopherbadger
-
-    - name: Checkout master 
-      uses: actions/checkout@master
-      with:
-        persist-credentials: false
-        fetch-depth: 0
-
-    - name: Update badges
-      run: |
-          gopherbadger -md="README.md"
-          git config --local user.email "action@github.com"
-          git config --local user.name "Github Action"
-          git add README.md
-          git commit -m "Update test coverage badge"
-
-
