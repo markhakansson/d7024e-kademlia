@@ -34,13 +34,14 @@ jobs:
         persist-credentials: false
         fetch-depth: 0
 
-    - name: Commit readme
+    - name: Run gopherbadger 
+      run: gopherbadger -md="README.md"
+
+    - name: Commit files
       run: |
-          gopherbadger -md="README.md"
           git config --local user.email "action@github.com"
           git config --local user.name "Github Action"
-          git add README.md
-          git commit -m "Update test coverage badge"
+          git commit -m "Update test coverage badge" -a
 
     - name: Push badge changes
       uses: ad-m/github-push-action@master
