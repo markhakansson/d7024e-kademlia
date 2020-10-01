@@ -3,6 +3,7 @@
 [![GitHub license](https://img.shields.io/github/license/viktorfrom/d7024e-kademlia)](https://github.com/viktorfrom/d7024e-kademlia/blob/master/LICENSE)
 ![gopherbadger-tag-do-not-edit](coverage_badge.png)
 
+
 Project designed and written in Go in conjunction with the D7024E Mobile and distributed computing systems course at Luleå University of Technology.
 
 ## Project description
