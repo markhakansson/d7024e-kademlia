@@ -36,7 +36,7 @@ jobs:
 
     - name: Update badges
       run: |
-          gopherbadger -png="true"
+          gopherbadger -md "README.md" 
           git status
           git config --local user.email "action@github.com"
           git config --local user.name "Github Action"
