@@ -9,11 +9,6 @@ jobs:
     runs-on: ubuntu-latest 
     if: github.event.pull_request.merged == true
     steps:
-    - uses: actions/checkout@master
-      with:
-        persist-credentials: false
-        fetch-depth: 0
-
     - name: Set up Go 1.x
       uses: actions/setup-go@v2
       with:
@@ -25,6 +20,11 @@ jobs:
 
     - name: Update badges
       run: gopherbadger -md="README.md"
+
+    - uses: actions/checkout@master
+      with:
+        persist-credentials: false
+        fetch-depth: 0
 
     - name: Commit readme
       run: |
