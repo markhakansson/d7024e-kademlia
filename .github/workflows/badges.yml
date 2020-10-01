@@ -21,9 +21,6 @@ jobs:
     - name: Download gopherbadge
       run: go get github.com/jpoles1/gopherbadger
 
-    - name: Update badges
-      run: gopherbadger -md="README.md"
-
     - uses: actions/checkout@master
       with:
         persist-credentials: false
@@ -31,6 +28,7 @@ jobs:
 
     - name: Commit readme
       run: |
+          gopherbadger -md="README.md"
           git config --local user.email "action@github.com"
           git config --local user.name "Github Action"
           git add README.md
