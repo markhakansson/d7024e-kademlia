@@ -1,13 +1,12 @@
 on:
-  pull_request:
-    types: [closed]
+  push:
+    branches: [ master ]
 
 jobs:
 
   update:
     name: Udpate badges on PR approval
     runs-on: ubuntu-latest 
-    if: github.event.pull_request.merged == true
     steps:
     - name: Set up Go 1.x
       uses: actions/setup-go@v2
@@ -29,21 +28,21 @@ jobs:
     - name: Download gopherbadge
       run: go get github.com/jpoles1/gopherbadger
 
-    - uses: actions/checkout@master
+    - name: Checkout master 
+      uses: actions/checkout@master
       with:
         persist-credentials: false
         fetch-depth: 0
 
-    - name: Run gopherbadger 
-      run: gopherbadger -md="README.md"
-
-    - name: Commit files
+    - name: Update badges
       run: |
+          gopherbadger -md="README.md"
           git config --local user.email "action@github.com"
           git config --local user.name "Github Action"
-          git commit -m "Update test coverage badge" -a
-
+          git add README.md
+          git commit -m "Update test coverage badge"
     - name: Push badge changes
       uses: ad-m/github-push-action@master
       with:
         github_token: ${{ secrets.GITHUB_TOKEN }}
+
