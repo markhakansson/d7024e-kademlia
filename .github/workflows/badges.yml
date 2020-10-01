@@ -1,21 +1,14 @@
 on:
-  pull_request_review:
-    types: [submitted]
-    branches: ['master']
-    paths: [' **path/**']
+  pull_request:
+    types: [closed]
 
 jobs:
 
   update:
     name: Udpate badges on PR approval
     runs-on: ubuntu-latest 
+    if: github.event.pull_request.merged == true
     steps:
-
-    - uses: actions/checkout@v2
-    - name: job name
-      if: github.event.review.state == 'approved'
-      run: |
-        echo "approved" ...
 
     - name: Set up Go 1.x
       uses: actions/setup-go@v2
