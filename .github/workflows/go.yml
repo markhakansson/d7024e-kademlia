@@ -51,11 +51,13 @@ jobs:
     - name: Download gopherbadge
       run: go get github.com/jpoles1/gopherbadger
 
-    - name: Update badges
+    - name: Checkout master 
       uses: actions/checkout@master
       with:
         persist-credentials: false
         fetch-depth: 0
+
+    - name: Update badges
       run: |
           gopherbadger -md="README.md"
           git conifg --local user.email "action@github.com"
