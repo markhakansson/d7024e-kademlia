@@ -60,7 +60,7 @@ jobs:
     - name: Update badges
       run: |
           gopherbadger -md="README.md"
-          git conifg --local user.email "action@github.com"
+          git config --local user.email "action@github.com"
           git config --local user.name "Github Action"
           git add README.md
           git commit -m "Update test coverage badge"
